@@ -12,12 +12,12 @@ entries:
       catalog.cattle.io/ui-extensions-version: '>= 3.0.0 < 4.0.0'
     apiVersion: v2
     appVersion: 0.1.0
-    created: "2026-11-03T18:31:21.196183475Z"
+    created: "2026-11-03T18:34:02.329313573Z"
     description: ext-workflow-test plugin
-    digest: bc08dc04a5ab92c16a63a28d42906bc26cb00d4a1acd8905e3a1c2032911418c
+    digest: 72c91e12d65f5550fd37b6a5216399c9424bcc3ccf5bfbae1846196f17e1e3bf
     name: ext-workflow-test
     type: application
     urls:
     - assets/ext-workflow-test/ext-workflow-test-0.1.0.tgz
     version: 0.1.0
-generated: "2026-11-03T18:31:21.195770747Z"
+generated: "2026-11-03T18:34:02.32902723Z"
