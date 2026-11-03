@@ -1,0 +1,29 @@
+name: Test shared workflows
+on: workflow_dispatch
+jobs:
+    uses: rak-phillip/dashboard/.github/workflows/build-extension-charts.yml@worktree-yarn-berry-migration
+    permissions: { contents: write, pull-requests: write }
+    with:
+      target_branch: gh-pages
+      tagged_release: clock-0.3.3
+      is_test: 'true'
+      test_ext_repo: ui-plugin-examples
+      test_ext_branch: main
+  catalog-classic:
+    uses: rak-phillip/dashboard/.github/workflows/build-extension-catalog.yml@worktree-yarn-berry-migration
+    permissions: { actions: write, contents: read, packages: write }
+    with:
+      registry_target: ghcr.io
+      registry_user: ${{ github.actor }}
+      tagged_release: ui-plugin-examples-0.2.0
+      is_test: 'true'
+      test_ext_repo: ui-plugin-examples
+      test_ext_branch: main
+    secrets:
+      registry_token: ${{ secrets.GITHUB_TOKEN }}
+  create-pr-yarn4:
+    uses: rak-phillip/dashboard/.github/workflows/create-pr-build-extension-charts.yml@worktree-yarn-berry-migration
+    permissions: { actions: write, contents: write, pull-requests: write }
+    with:
+      target_branch: gh-pages
+      tagged_release: ext-workflow-test-0.1.0

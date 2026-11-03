@@ -1,0 +1,36 @@
+name: Extension Unit Tests
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+
+defaults:
+  run:
+    shell: bash
+    working-directory: ./
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Corepack must be enabled before setup-node: `cache: yarn` resolves the cache
+      # directory by shelling out to `yarn --version`
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Run unit tests
+        run: yarn test:ci
