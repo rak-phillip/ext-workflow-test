@@ -1,6 +1,7 @@
 name: Test shared workflows
 on: workflow_dispatch
 jobs:
+  charts-classic:
     uses: rak-phillip/dashboard/.github/workflows/build-extension-charts.yml@worktree-yarn-berry-migration
     permissions: { contents: write, pull-requests: write }
     with:
